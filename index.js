@@ -35,7 +35,7 @@ const reciveData = data =>{
             const newsArry = data?.data;
             newsArry?.forEach(element =>{
             const {author, details, image_url, others_info, rating, thumbnail_url, title, total_view, _id} = element;
-            console.log(author);
+            console.log(total_view);
 
             const createDiv = document.createElement('div');
             createDiv.classList.add('col-12');
@@ -53,14 +53,14 @@ const reciveData = data =>{
                   <div class="row mt-3">
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <div class="text-center">
-                            <img class="mb-1" src="./img/Rectangle 19.png" alt="">
-                            <span>name</span>
+                            <img class="mb-1" src="${author.name===null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg':author.img}" alt="" style="width: 30%; border-radius: 50%;">
+                            <span class="d-block">${author.name===null ? "not found": author.name}</span>
                             <span class="d-block">4-05-2022</span>
                         </div>
                     </div>
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-eye mx-2" style="font-size: 18px;"></i>
-                        <span style="font-weight: 700; color: #2b1e1e;">4.4m</span>
+                        <span style="font-weight: 700; color: #2b1e1e;">${total_view}</span>
                     </div>
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <i class="fa-regular fa-star-half-stroke" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
