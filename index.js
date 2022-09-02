@@ -30,13 +30,27 @@ const reciveData = data =>{
            };
            categoriSearch();
            const search = data =>{
+            console.log(data);
+            const message = document.getElementById('message');
             const parentDiv = document.getElementById('parent-div');
+            if(data?.status === false){
+                parentDiv.innerHTML = ``;
+                message.classList.remove('d-none');
+            }else{
+                parentDiv.innerHTML = ``;
+                message.classList.add('d-none');
+            }
 
             const newsArry = data?.data;
             newsArry?.forEach(element =>{
             const {author, details, image_url, others_info, rating, thumbnail_url, title, total_view, _id} = element;
-            console.log(total_view);
+            console.log(rating);
 
+            if(details.length >250){
+
+            const cutString = details.slice(0, 250);
+            const setlast = cutString + '.....';
+                
             const createDiv = document.createElement('div');
             createDiv.classList.add('col-12');
             const bootsCard = `
@@ -47,8 +61,8 @@ const reciveData = data =>{
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">${title}</h5>
+                  <p class="card-text">${setlast}</p>
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   <div class="row mt-3">
                     <div class="col-3 d-flex justify-content-center align-items-center">
@@ -82,6 +96,7 @@ const reciveData = data =>{
                 parentDiv.appendChild(createDiv);
 
                 console.log(element);
+            }
             });
            }
            search();
