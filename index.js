@@ -12,6 +12,7 @@ firstApi();
 
 const UlsecondNave = document.getElementById('ulSecondNav');
 const spenars = document.getElementById('reloder');
+
 const reciveData = data =>{
     const getApiArray = data?.data.news_category;
     getApiArray?.forEach(element => {
@@ -19,10 +20,12 @@ const reciveData = data =>{
         const {category_id, category_name} = element;
         const createLi = document.createElement('li');
         createLi.classList.add('responsive');
+
         createLi.setAttribute("id" ,`${category_id}`)
         createLi.style.fontWeight = "500";
         createLi.style.color = "#053f82";
         createLi.style.cursor = "pointer";
+
         createLi.innerText = category_name;
         UlsecondNave.appendChild(createLi);
 
@@ -31,19 +34,23 @@ const reciveData = data =>{
             spenars.classList.remove('d-none');
         const categoriSearch = () =>{
              fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
-            .then(req => req.json(req))
+            .then(req  => req.json(req))
             .then(data => search(data))
            };
-           categoriSearch();
+          categoriSearch();
            const search = data =>{
+            console.log(data);
              const totalData = (data?.data.length);
             // set total data html
             const setTotal = document.getElementById('total');
             setTotal.innerText = totalData;
+
             const totalNews = document.getElementById('totalNews');
             totalNews.classList.remove('d-none');
+
             const message = document.getElementById('message');
             const parentDiv = document.getElementById('parent-div');
+
             if(data?.status === false){
                 parentDiv.innerHTML = ``;
                 message.classList.remove('d-none');
@@ -54,14 +61,14 @@ const reciveData = data =>{
                 message.classList.add('d-none');
                 
             }
-
             const newsArry = data?.data;
             // sorting add
             const sorting = newsArry?.sort((a, b) => (a.total_view < b.total_view ? 1 : -1));
+
             sorting?.forEach(element =>{
-                // console.log(element);
+
             const {author, details, image_url, others_info, rating, thumbnail_url, title, total_view, _id} = element;
-            // console.log(author);
+            console.log();
 
             if(details.length >250){
 
@@ -86,14 +93,14 @@ const reciveData = data =>{
                   <div class="row mt-3">
                     <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <div class="text-center">
-                            <img class="mb-1" src="${author.name===null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg':author.img}" alt="" style="width: 30%; border-radius: 50%;">
+                            <img class="mb-1" src="${author.img}" alt="" style="width: 30%; border-radius: 50%;">
                             <span class="d-block">${author.name===null ? "not found": author.name}</span>
-                            <span class="d-block">${author?.published_date}</span>
+                            <span class="d-block">${author?.published_date === null ? "Not found" : author?.published_date}</span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-eye mx-2" style="font-size: 18px;"></i>
-                        <span style="font-weight: 700; color: #2b1e1e;">${total_view===null  ? "No view": total_view}</span>
+                        <span style="font-weight: 700; color: #2b1e1e;">${total_view===null  ? "Not found": total_view}</span>
                     </div>
                     <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <i class="fa-regular fa-star-half-stroke" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
@@ -111,6 +118,7 @@ const reciveData = data =>{
             </div>
           </div>
             `;
+
                 createDiv.innerHTML = bootsCard;
                 parentDiv.appendChild(createDiv);
                 spenars.classList.add('d-none');
@@ -129,17 +137,14 @@ const modal = id =>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
     .then(req => req.json())
     .then(data => idData(data))
-    .catch(error => { 
-        console.log(error.message);
-    })
+    .catch(error => { console.log(error.message) });
     // console.log(id);
 }
 
 const idData = data =>{
+
     const getData = data?.data[0];
-    console.log(getData?.category_id);
-    console.log(getData?.author?.name);
-    
+    console.log(getData);
     const getModalId = document.getElementById('modal-b');
     getModalId.innerHTML =``;
     const createDiv = document.createElement('div');
@@ -154,9 +159,9 @@ const idData = data =>{
           <h5 class="card-title">${getData?.title}</h5>
           <p class="card-text">${getData?.details}</p>
           <div class="mt-2 mb-2">
-            <img src="${getData?.total_view === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg' : getData?.author?.img}" alt="" style="width: 15%; border-radius: 50%;">
+            <img src="${getData?.author?.img}" alt="" style="width: 15%; border-radius: 50%;">
             <span>${getData?.author?.name === null ? 'not found': getData?.author?.name}</span>
-            <span style="margin-left: 15px">Views: ${getData?.total_view === null ? "No view" : getData?.total_view}</span>
+            <span style="margin-left: 15px">Views: ${getData?.total_view === null ? "Not found" : getData?.total_view}</span>
           </div>
         </div>
       </div>
@@ -167,5 +172,3 @@ const idData = data =>{
 
 modal( );
 reciveData();
-
-
