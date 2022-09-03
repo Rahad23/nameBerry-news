@@ -57,11 +57,11 @@ const reciveData = data =>{
 
             const newsArry = data?.data;
             // sorting add
-            const sorting = newsArry.sort((a, b) => (a.total_view < b.total_view ? 1 : -1));
+            const sorting = newsArry?.sort((a, b) => (a.total_view < b.total_view ? 1 : -1));
             sorting?.forEach(element =>{
                 // console.log(element);
             const {author, details, image_url, others_info, rating, thumbnail_url, title, total_view, _id} = element;
-            // console.log(_id);
+            // console.log(author);
 
             if(details.length >250){
 
@@ -88,7 +88,7 @@ const reciveData = data =>{
                         <div class="text-center">
                             <img class="mb-1" src="${author.name===null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg':author.img}" alt="" style="width: 30%; border-radius: 50%;">
                             <span class="d-block">${author.name===null ? "not found": author.name}</span>
-                            <span class="d-block">4-05-2022</span>
+                            <span class="d-block">${author?.published_date}</span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
