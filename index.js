@@ -3,6 +3,9 @@ const firstApi = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(req => req.json())
     .then(data => reciveData(data))
+    .catch(error => { 
+        console.log(error.message);
+    })
 }
 firstApi();
 // get second navbar div id
@@ -32,7 +35,12 @@ const reciveData = data =>{
            };
            categoriSearch();
            const search = data =>{
-            console.log(data);
+             const totalData = (data?.data.length);
+            // set total data html
+            const setTotal = document.getElementById('total');
+            setTotal.innerText = totalData;
+            const totalNews = document.getElementById('totalNews');
+            totalNews.classList.remove('d-none');
             const message = document.getElementById('message');
             const parentDiv = document.getElementById('parent-div');
             if(data?.status === false){
@@ -47,8 +55,9 @@ const reciveData = data =>{
             }
 
             const newsArry = data?.data;
-            // newsArry.sort()
-            newsArry?.forEach(element =>{
+            console.log(newsArry);
+            const sorting = newsArry.sort((a, b) => (a.total_view < b.total_view ? 1 : -1));
+            sorting?.forEach(element =>{
                 // console.log(element);
             const {author, details, image_url, others_info, rating, thumbnail_url, title, total_view, _id} = element;
             // console.log(_id);
@@ -117,6 +126,9 @@ const modal = id =>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
     .then(req => req.json())
     .then(data => idData(data))
+    .catch(error => { 
+        console.log(error.message);
+    })
     // console.log(id);
 }
 
@@ -139,9 +151,9 @@ const idData = data =>{
           <h5 class="card-title">${getData?.title}</h5>
           <p class="card-text">${getData?.details}</p>
           <div class="mt-2 mb-2">
-            <img src="${getData?.author?.img}" alt="" style="width: 15%; border-radius: 50%;">
-            <span>${getData?.author?.name}</span>
-            <span style="margin-left: 15px">Views: ${getData?.total_view}</span>
+            <img src="${getData?.total_view === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg' : getData?.author?.img}" alt="" style="width: 15%; border-radius: 50%;">
+            <span>${getData?.author?.name === null ? 'not found': getData?.author?.name}</span>
+            <span style="margin-left: 15px">Views: ${getData?.total_view === null ? "No view" : getData?.total_view}</span>
           </div>
         </div>
       </div>
