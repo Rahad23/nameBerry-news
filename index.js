@@ -116,10 +116,39 @@ const reciveData = data =>{
 const modal = id =>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
     .then(req => req.json())
-    .then(data => console.log(data))
+    .then(data => idData(data))
     // console.log(id);
 }
 
+const idData = data =>{
+    const getData = data?.data[0];
+    console.log(getData?.category_id);
+    console.log(getData?.author?.name);
+    
+    const getModalId = document.getElementById('modal-b');
+    getModalId.innerHTML =``;
+    const createDiv = document.createElement('div');
+    createDiv.classList.add('d-flex');
+    createDiv.classList.add('justify-content-center');
+    const bCard = `
+    <div class="card" style="width: 25rem;">
+        <div class="p-2">
+           <img src="${getData?.thumbnail_url}" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${getData?.title}</h5>
+          <p class="card-text">${getData?.details}</p>
+          <div class="mt-2 mb-2">
+            <img src="${getData?.author?.img}" alt="" style="width: 15%; border-radius: 50%;">
+            <span>${getData?.author?.name}</span>
+            <span style="margin-left: 15px">Views: ${getData?.total_view}</span>
+          </div>
+        </div>
+      </div>
+    `;
+    createDiv.innerHTML = bCard;
+    getModalId.appendChild(createDiv);
+};
 
 modal( );
 reciveData();
