@@ -55,7 +55,7 @@ const reciveData = data =>{
             }
 
             const newsArry = data?.data;
-            console.log(newsArry);
+            // sorting add
             const sorting = newsArry.sort((a, b) => (a.total_view < b.total_view ? 1 : -1));
             sorting?.forEach(element =>{
                 // console.log(element);
