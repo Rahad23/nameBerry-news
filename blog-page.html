@@ -46,8 +46,90 @@
     </div>
 
 
-    <!-- Quiston section -->
-    
+    <!-- Quiston section use bootstrap accordion-->
+    <section class="container shadow-lg" style="margin-top: 150px;">
+ <div class="row d-flex justify-content-center align-items-center">
+<div class="col-12">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              What is the difference between var, const, let?
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"><strong>In JavaScript</strong>, users can declare a variable using 3 keywords that are var, let, and const. In this article, we will see the differences between the var, let, and const keywords. We will discuss the scope and other required concepts about each keyword.
+
+                var keyword in JavaScript: The var is the oldest keyword to declare a variable in JavaScript. 
+                
+                Scope: Global scoped or function scoped. The scope of the var keyword is the global or function scope. It means variables defined outside the function can be accessed globally, and variables defined inside a particular function can be accessed within the function. </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Arrow function and regular function different  '_'
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"><strong>Arrow function</strong> — also called fat arrow function— is a new feature introduced in ES6 that is a more concise syntax for writing function expressions. While both regular JavaScript functions and arrow functions work in a similar manner, there are certain differences between them.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Map , forEach, filter, fiend the difference between '_'
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <div>
+                    <strong>.forEach:</strong>
+                    .forEach(), is used to execute the same code on every element in an array but does not change the array and it returns undefined.
+                        
+                    Example:
+                    In the example below we would use .forEach() to iterate over an array of food and log that we would want to eat each of them.
+                </div>
+                <br>
+                <div>
+                        <strong>.map():</strong>
+                        .map() executes the same code on every element in an array and returns a new array with the updated elements.
+
+                        Example:
+                        In the example below we would use .map to iterate over the elements of the cost array and divide each element by 10, then assign our new array containing the new cost to the variable newCost.
+                </div>
+                <br>
+                <div>
+                    <strong>.filter():</strong>
+                    .filter() checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria.
+
+                    Example:
+                    In the example below we would use .filter to return values that are less than 200
+                </div>
+                <br>
+                <div>
+                    <strong>.find():</strong>
+                    The find() method is used to find all the descendant elements of the selected element. It finds the element in the DOM tree by traversing through the root to leaf.
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo4" aria-expanded="false" aria-controls="flush-collapseTwo4">
+                why should use template string?
+              </button>
+            </h2>
+            <div id="flush-collapseTwo4" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo4" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body"><strong>Template literals</strong> are literals delimited with backtick (`) characters, allowing for multi-line strings, for string interpolation with embedded expressions, and for special constructs called tagged templates.
+
+                Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.</div>
+            </div>
+          </div>
+      </div>
+</div>
+        </div>
+    </section>
 
     <footer class="p-2" style="margin-top: 120px;">
         <div class="d-flex justify-content-center align-items-center"">

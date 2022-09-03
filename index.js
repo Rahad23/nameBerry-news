@@ -18,6 +18,7 @@ const reciveData = data =>{
 
         const {category_id, category_name} = element;
         const createLi = document.createElement('li');
+        createLi.classList.add('responsive');
         createLi.setAttribute("id" ,`${category_id}`)
         createLi.style.fontWeight = "500";
         createLi.style.color = "#053f82";
@@ -69,6 +70,8 @@ const reciveData = data =>{
                 
             const createDiv = document.createElement('div');
             createDiv.classList.add('col-12');
+            createDiv.classList.add('d-flex');
+            createDiv.classList.add('justify-content-center');
             const bootsCard = `
             <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
@@ -81,25 +84,25 @@ const reciveData = data =>{
                   <p class="card-text">${setlast}</p>
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   <div class="row mt-3">
-                    <div class="col-3 d-flex justify-content-center align-items-center">
+                    <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <div class="text-center">
                             <img class="mb-1" src="${author.name===null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/2560px-A_black_image.jpg':author.img}" alt="" style="width: 30%; border-radius: 50%;">
                             <span class="d-block">${author.name===null ? "not found": author.name}</span>
                             <span class="d-block">4-05-2022</span>
                         </div>
                     </div>
-                    <div class="col-3 d-flex justify-content-center align-items-center">
+                    <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-eye mx-2" style="font-size: 18px;"></i>
                         <span style="font-weight: 700; color: #2b1e1e;">${total_view===null  ? "No view": total_view}</span>
                     </div>
-                    <div class="col-3 d-flex justify-content-center align-items-center">
+                    <div class="col-md-3 col-sm-6 d-flex justify-content-center align-items-center">
                         <i class="fa-regular fa-star-half-stroke" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
                         <i class="fa-regular fa-star" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
                         <i class="fa-regular fa-star" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
                         <i class="fa-regular fa-star" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
                         <i class="fa-regular fa-star" style="margin-left: 5px; font-size: 20px; color: #515151;"></i>
                     </div>
-                    <div class="col-3 d-flex justify-content-end align-items-center p-5">
+                    <div class="col-md-3 col-sm-6 d-flex justify-content-end align-items-center p-5">
                      <i  onclick="modal('${_id}')" class="fa-solid fa-right-long" style="font-size: 18px; color: #5D5FEF; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                     </div>
                   </div>

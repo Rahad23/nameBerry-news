@@ -4,3 +4,19 @@ body{
 .margin-control{
     margin-right: 0!important;
 }
+
+
+@media (max-width: 576px) { 
+    #ulSecondNav{
+        display: flex!important;
+        flex-direction: column;
+    }
+ }
+
+ @media (max-width: 768px) { 
+    #ulSecondNav{
+        display: flex!important;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+ }
